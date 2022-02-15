@@ -9,7 +9,8 @@ public class Coin {
 
     // Condition can be a variety of strings, rarity 0-5 (Stars can be decimals),
     // value is cost of all.
-    // Add collectable constructors here
+    // Add collectable constructors here 
+    //test commment line
     public Coin() {
     }
 
