@@ -77,7 +77,7 @@ public class Coin {
     public String toString() {
         String report = "";
         report = this.color + " " + this.size + " " + this.condition + " " + this.cost + " " + this.rarity + " "
-                + this.value + "/n";
+                + this.value;
 
         return report;
     }
