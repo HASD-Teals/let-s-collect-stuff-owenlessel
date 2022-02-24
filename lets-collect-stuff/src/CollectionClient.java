@@ -7,14 +7,18 @@ public class CollectionClient {
         // Add your collection ArrayList here..
         // e.g. List<Collectable> collection = new ArrayList<Collectable>();
         List<Coin> Coins = new ArrayList<Coin>();
-        // Add collection methods here to manage and manipulate the collection
-        Coins.add(addCoins());
-        System.out.println(Coins);
+        // Add collection methods here to manage and manipulate the collection uncomment the methods you want to test
+        //Coins.add(addCoins());
+        //Coins.add(addCoins());
+        //System.out.println(Coins);
+        //entireCollection(Coins);
         //Coins.remove(removeCoins(Coins));
         //System.out.println("Coin has been removed");
         //System.out.println(Coins);
-        searchCoins(Coins);
-
+        //search_or_sortCoins(Coins);
+        //System.out.println(Coins);
+        //totalCoins(Coins);
+        //totalValue(Coins);
     }
 
     public static Coin addCoins() {
@@ -43,26 +47,26 @@ public class CollectionClient {
         return removeCoin;
     }
 
-    public static void searchCoins(List<Coin> Coins) {
+    public static void search_or_sortCoins(List<Coin> Coins) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter 1 to search for a property or Enter 2 to search for an item: ");
+        System.out.println(
+                "Enter 1 to search for a property or Enter 2 to search for an item or Enter 3 to sort by a property: ");
         int itemProp = in.nextInt();
         if (itemProp == 1) {
             System.out.println("Enter a property to search: ");
             String prop = in.next();
             prop.toLowerCase();
-            System.out.println(prop);
-            if (prop == "color") {
-                System.out.println("What Color Do You Want to Search?: ");
-                String propColor = in.nextLine();
+            if (prop.equals("color")) {
+                System.out.print("What Color Do You Want to Search?: ");
+                String propColor = in.next();
                 for (int i = 0; i < Coins.size(); i++) {
-                    if (Coins.get(i).color == propColor) {
+                    if (Coins.get(i).color.equals(propColor)) {
                         System.out.println(Coins.get(i));
                     }
                 }
             }
-            if (prop == "size") {
-                System.out.println("What Size Do You Want to Search?: ");
+            if (prop.equals("size")) {
+                System.out.print("What Size Do You Want to Search?: ");
                 int propSize = in.nextInt();
                 for (int i = 0; i < Coins.size(); i++) {
                     if (Coins.get(i).size == propSize) {
@@ -70,17 +74,17 @@ public class CollectionClient {
                     }
                 }
             }
-            if (prop == "condition") {
-                System.out.println("What Coin Condition Do You Want to Search?: ");
-                String propCondition = in.nextLine();
+            if (prop.equals("condition")) {
+                System.out.print("What Coin Condition Do You Want to Search?: ");
+                String propCondition = in.next();
                 for (int i = 0; i < Coins.size(); i++) {
-                    if (Coins.get(i).condition == propCondition) {
+                    if (Coins.get(i).condition.equals(propCondition)) {
                         System.out.println(Coins.get(i));
                     }
                 }
             }
-            if (prop == "cost") {
-                System.out.println("What Coin Cost Do You Want to Search?: ");
+            if (prop.equals("cost")) {
+                System.out.print("What Coin Cost Do You Want to Search?: ");
                 Double propCost = in.nextDouble();
                 for (int i = 0; i < Coins.size(); i++) {
                     if (Coins.get(i).cost == propCost) {
@@ -88,8 +92,8 @@ public class CollectionClient {
                     }
                 }
             }
-            if (prop == "rarity") {
-                System.out.println("What Coin Rarity Do You Want to Search?: ");
+            if (prop.equals("rarity")) {
+                System.out.print("What Coin Rarity Do You Want to Search?: ");
                 Double propRarity = in.nextDouble();
                 for (int i = 0; i < Coins.size(); i++) {
                     if (Coins.get(i).rarity == propRarity) {
@@ -97,8 +101,8 @@ public class CollectionClient {
                     }
                 }
             }
-            if (prop == "value") {
-                System.out.println("What Coin Value Do You Want to Search?: ");
+            if (prop.equals("value")) {
+                System.out.print("What Coin Value Do You Want to Search?: ");
                 Double propValue = in.nextDouble();
                 for (int i = 0; i < Coins.size(); i++) {
                     if (Coins.get(i).cost == propValue) {
@@ -110,6 +114,97 @@ public class CollectionClient {
             System.out.println("What Coin Do You Want to Search For?: ");
             int coinSearchNum = in.nextInt();
             System.out.println(Coins.get(coinSearchNum));
+        } else if (itemProp == 3) {
+            System.out.println("What Property do you want to sort the collection by?: ");
+            String sortProp = in.next();
+            sortProp.toLowerCase();
+            if (sortProp.equals("color")) {
+                System.out.print("What Color Do You Want to Sort By?: ");
+                String sortColor = in.next();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).color.equals(sortColor)) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+            if (sortProp.equals("size")) {
+                System.out.print("What Size Do You Want to Sort By?: ");
+                int sortSize = in.nextInt();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).size == sortSize) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+            if (sortProp.equals("condition")) {
+                System.out.print("What Coin Condition Do You Want to Search?: ");
+                String sortCondition = in.next();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).condition.equals(sortCondition)) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+            if (sortProp.equals("cost")) {
+                System.out.print("What Coin Cost Do You Want to Search?: ");
+                Double sortCost = in.nextDouble();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).cost == sortCost) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+            if (sortProp.equals("rarity")) {
+                System.out.print("What Coin Rarity Do You Want to Search?: ");
+                Double sortRarity = in.nextDouble();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).rarity == sortRarity) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+            if (sortProp.equals("value")) {
+                System.out.print("What Coin Value Do You Want to Search?: ");
+                Double sortValue = in.nextDouble();
+                for (int i = 0; i < Coins.size(); i++) {
+                    if (Coins.get(i).cost == sortValue) {
+                        Coin temp = Coins.get(i);
+                        Coins.remove(i);
+                        Coins.add(0, temp);
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    public static void totalCoins(List<Coin> Coins) {
+        System.out.println("There is " + Coins.size() + " coins in the collection.");
+    }
+
+    public static void totalValue(List<Coin> Coins) {
+        double coinsValue = 0;
+        for (int i = 0; i < Coins.size(); i++) {
+            coinsValue = coinsValue + Coins.get(i).value;
+        }
+        System.out.println(
+                "The total value of all coins in the collection is " + coinsValue + " USD (United States Dollar)");
+    }
+
+    public static void entireCollection(List<Coin> Coins) {
+        for (int i = 0; i < Coins.size(); i++) {
+            System.out.println(Coins.get(i));
         }
     }
 }
